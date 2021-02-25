@@ -6,7 +6,17 @@
 
 .texte_centrer {
   position: absolute;
-  top: 20%;
+  top: 55%;
   left: 50%;
   transform: translate(-50%, -50%);
+}
+
+.chiffres {
+
+  color: rgb(56, 138, 192);
+}
+
+.imc {
+
+padding-left: 0%;
 }
