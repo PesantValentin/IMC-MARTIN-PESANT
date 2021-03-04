@@ -6,7 +6,7 @@
 
 .texte_centrer {
   position: absolute;
-  top: 55%;
+  top: 52%;
   left: 50%;
   transform: translate(-50%, -50%);
 }
@@ -19,4 +19,15 @@
 .imc {
 
 padding-left: 0%;
+}
+
+.bouton_connexion {
+  margin-left: 80%;
+}
+
+.sign_in_center {
+  position: absolute;
+  top: 55%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
