@@ -3,10 +3,14 @@
 // Importation des assets nécessaires
 require "inc/db.php";
 require "class/calcul.php";
+require "class/user.php";
 
+// On prépare les classes nécessaires pour la page
+$user = new User($db);
 $calcul = new Calcul($db);
 
-if(isset($_POST)) {
+// On vérifie l'envoi du formulaire en Ajax pour lancer le calcule
+if(isset($_POST["poids"])) {
     $imc = $calcul->calculIMC($_POST["taille"], $_POST["poids"]);
 }
 
@@ -22,38 +26,53 @@ if(isset($_POST)) {
 </head>
 <body>
 
-<?php
-
-if(!empty($_SESSION["email"] )) {
-    ?>
-    <div class="bouton_connexion">
-        <a href="#"><button type="submit"><?php echo $_SESSION["username"]; ?></button></a>
-        <a href="logout.php"><button type="submit">Déconnexion</button></a>
-    </div>
-    <?php
-} else {
-    ?>
-    <div class="bouton_connexion">
-    <a href="register.php"><button type="submit">Inscription</button></a>
-    <a href="login.php"><button type="submit">Connexion</button></a>
-    </div>
-
-    <?php
-
-}
-
-?>
+    <?php $user->checkUserConnectHeader(); ?>
 
     <div class="contenant">
             <img src="fond.jpg" alt="Background">
 
-            <div class="texte_centrer"><center><h1><u>Calculer son IMC</u></h1></center>
+            <div class="texte_centrer">
+            <div align="center">
+            <h1><u>Calculer son IMC</u></h1>
+            </div>
 
-                <form method="POST" action="">
+                <?php 
+                if(isset($_SESSION["email"])) {
+                ?>
+
+                    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+                        <script type="text/javascript">
+                        function sendData()
+                            {
+                            var name = document.getElementById("poids").value;
+                            var age = document.getElementById("taille").value;
+                            $.ajax({
+                                type: 'post',
+                                url: '',
+                                data: {
+                                name:name,
+                                age:age
+                                },
+                                success: function (response) {
+                                $('#res').html("Vos données seront sauvegardées");
+                                }
+                            });
+                                
+                            return false;
+                            }
+                        </script>
+
+                    <form method="POST" onsubmit="return sendData();">
                     Poids : <input type="text" name="poids" placeholder="Indiquer votre poids en kg"/>
                     Taille :<input type="text" name="taille" placeholder="Indiquer votre taille en mètre"/>
-                    <input type="submit" value="Calculer"></p>
-                </FORM>
+                    <input type="submit" name="submit_form" value="Calculer"></p>
+                    </form>
+
+                    <?php
+                } else {
+                    echo "Vous devez vous connecter pour effectuer une mesure";
+                }
+                ?>
 
                 <?php if(isset($imc)) { echo "Votre IMC est de: ".$imc; } ?>
 
