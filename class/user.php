@@ -15,7 +15,9 @@ class User {
     public function addUser($email, $username, $password) {
         $this->_db->query('INSERT INTO `user`(`id`, `username`, `email`, `password`) VALUES (NULL, "'. $username . '","' . $email . '","' . $password . '")');
         
-        header("Location: login.php");
+        if(!empty($email)) {
+            header("Location: login.php");
+        }
         
     }
 
