@@ -46,7 +46,7 @@ class User {
     public function checkUserConnectHeader() {
         if(isset($_SESSION["email"])) {
             echo '<div class="bouton_connexion">
-            <a href="#"><button type="submit"><?php echo $_SESSION["username"]; ?></button></a>
+            <p><?php echo $_SESSION["username"]; ?></p>
             <a href="logout.php"><button type="submit">Déconnexion</button></a>
         </div>';
         } else {
