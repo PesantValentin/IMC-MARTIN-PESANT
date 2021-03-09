@@ -13,9 +13,9 @@ class Calcul {
     // Fonction du calcul de l'IMC : Poids x taille (m2)
     public function calculIMC($taille, $poids) {
 
-        $poidsCarre = $poids*$poids;
-        $tailleFinal = $taille*100;
-        $imc = $poidsCarre/$tailleFinal;
+        $tailleCM = $taille*100;
+        $tailleFinal = $tailleCM*$tailleCM
+        $imc = $poids/$tailleFinal;
 
         $this->_db->query('INSERT INTO `calcul_log`(`id`, `poids`, `taille`, `imc`) VALUES (NULL, "'. $poids . '","' . $taille . '","' . $imc . '")');
 
