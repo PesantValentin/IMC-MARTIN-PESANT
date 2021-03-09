@@ -7,7 +7,7 @@ require "class/user.php";
 // Traitement par la class User
 $user = new User($db);
 
-if(isset($_POST)) {
+if(isset($_POST["register"])) {
 
     $user->addUser($_POST["email"], $_POST["username"], $_POST["password"]);
 
@@ -46,7 +46,7 @@ if(isset($_POST)) {
                 <p><label for="password">Mot de passe :</label>
                 <input type="password" id="password" name="password"></p>
             </div>
-            <button type="submit">Inscription</button>
+            <button type="submit" name="register">Inscription</button>
         </form>
 
         <a href="login.php"><button>Aller vers la page de connexion</button></a>
