@@ -64,7 +64,7 @@ if(isset($_POST["poids"])) {
 
                     <form method="POST" onsubmit="return sendData();">
                     Poids : <input type="text" name="poids" placeholder="Indiquer votre poids en kg"/>
-                    Taille :<input type="text" name="taille" placeholder="Indiquer votre taille en mètre"/>
+                    Taille :<input type="text" name="taille" placeholder="Indiquer votre taille en cm"/>
                     <input type="submit" name="submit_form" value="Calculer"></p>
                     </form>
 
