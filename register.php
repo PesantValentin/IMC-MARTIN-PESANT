@@ -7,11 +7,6 @@ require "class/user.php";
 // Traitement par la class User
 $user = new User($db);
 
-if(isset($_POST["register"])) {
-
-    $user->addUser($_POST["email"], $_POST["username"], $_POST["password"]);
-
-}
 
 
 ?>
