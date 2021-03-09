@@ -13,7 +13,7 @@ class Calcul {
     // Fonction du calcul de l'IMC : Poids x taille (m2)
     public function calculIMC($taille, $poids) {
 
-        $tailleCM = $taille*100;
+        $tailleCM = $taille/100;
         $tailleFinal = $tailleCM*$tailleCM;
         $imc = $poids/$tailleFinal;
 
