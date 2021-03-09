@@ -14,7 +14,7 @@ class Calcul {
     public function calculIMC($taille, $poids) {
 
         $tailleCM = $taille*100;
-        $tailleFinal = $tailleCM*$tailleCM
+        $tailleFinal = $tailleCM*$tailleCM;
         $imc = $poids/$tailleFinal;
 
         $this->_db->query('INSERT INTO `calcul_log`(`id`, `poids`, `taille`, `imc`) VALUES (NULL, "'. $poids . '","' . $taille . '","' . $imc . '")');
