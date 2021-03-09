@@ -14,7 +14,9 @@ class User {
     // Fonction ajout d'utilisateur : Email, Nom d'utilisateur et mot de passe
     public function addUser($email, $username, $password) {
         $this->_db->query('INSERT INTO `user`(`id`, `username`, `email`, `password`) VALUES (NULL, "'. $username . '","' . $email . '","' . $password . '")');
-
+        
+        header("Location: login.php");
+        
     }
 
     // Fonction connexion utilisateur : Nom d'utilisateur et mot de passe
