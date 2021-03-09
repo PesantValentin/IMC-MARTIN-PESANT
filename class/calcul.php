@@ -17,7 +17,7 @@ class Calcul {
         $tailleFinal = $tailleCM*$tailleCM;
         $imc = $poids/$tailleFinal;
 
-        $this->_db->query('INSERT INTO `calcul_log`(`id`, `poids`, `taille`, `imc`) VALUES (NULL, "'. $poids . '","' . $taille . '","' . $imc . '")');
+        $this->_db->query('INSERT INTO `calcul_log`(`id`, `poids`, `taille`, `imc`, `user_id`) VALUES (NULL, "'. $poids . '","' . $taille . '","' . $imc . '", "' . $_SESSION["id"] . '")');
 
         return $imc;
 
